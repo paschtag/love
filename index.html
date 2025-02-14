@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy V-Day</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffcce1;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    .card {
+      text-align: center;
+      padding: 20px;
+      border: 2px solid #ff77a9;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+    .message {
+      font-size: 24px;
+      color: #ff4081;
+    }
+    .big-text {
+      font-size: 36px;
+      font-weight: bold;
+      color: #d50058;
+      margin-top: 20px;
+    }
+    .from-lover {
+      font-size: 18px;
+      color: #ff4081;
+      margin-top: 20px;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: fadeOut 3s linear;
+    }
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: scale(1) rotate(-45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2) rotate(-45deg);
+      }
+    }
+    .random-heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: pink;
+      transform: rotate(-45deg);
+      opacity: 0.8;
+      animation: float 10s linear infinite;
+    }
+    .image-section {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid #ff77a9;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+    .image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .image-section:hover {
+      transform: scale(1.2);
+    }
+    .section-1 { top: 10%; left: 10%; }
+    .section-2 { top: 10%; right: 10%; }
+    .section-3 { bottom: 10%; left: 10%; }
+    .section-4 { bottom: 10%; right: 10%; }
+    .section-5 { top: 50%; left: 10%; transform: translateY(-50%); }
+    .section-6 { top: 50%; right: 10%; transform: translateY(-50%); }
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+      }
+      50% {
+        transform: translateY(-100px) rotate(-45deg);
+      }
+      100% {
+        transform: translateY(0) rotate(-45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="message">I love you!</div>
+  <div class="big-text">Happy V-Day!</div>
+  <div class="from-lover">From your lover, Pasch</div>
+</div>
+
+<div class="image-section section-1">
+  <img src="image1.jpg" alt="Image 1">
+</div>
+<div class="image-section section-2">
+  <img src="image2.PNG" alt="Image 2">
+</div>
+<div class="image-section section-3">
+  <img src="image3.JPG" alt="Image 3">
+</div>
+<div class="image-section section-4">
+  <img src="image4.jpg alt="Image 4">
+</div>
+<div class="image-section section-5">
+  <img src="image5.JPG" alt="Image 5">
+</div>
+<div class="image-section section-6">
+  <img src="image6.JPG" alt="Image 6">
+</div>
+
+<script>
+  document.addEventListener('mousemove', function(e) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = e.pageX + 'px';
+    heart.style.top = e.pageY + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 3000);
+  });
+
+  setInterval(() => {
+    const randomHeart = document.createElement('div');
+    randomHeart.classList.add('random-heart');
+    randomHeart.style.left = Math.random() * window.innerWidth + 'px';
+    randomHeart.style.top = Math.random() * window.innerHeight + 'px';
+    document.body.appendChild(randomHeart);
+
+    setTimeout(() => {
+      randomHeart.remove();
+    }, 10000);
+  }, 2000);
+</script>
+</body>
+</html>
